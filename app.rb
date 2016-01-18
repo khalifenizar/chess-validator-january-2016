@@ -4,6 +4,8 @@ require_relative("lib/piece.rb")
 require_relative("lib/king.rb")
 require_relative("lib/rook.rb")
 require_relative("lib/knight.rb")
+require_relative("lib/board.rb")
+
 
 # --------------------------
 # --------- King -----------
@@ -65,3 +67,42 @@ p white_knight_right.move?(3, 5)
 p white_knight_right.move?(8, 4)
 
 puts "\n------------------\n"
+
+
+# --------------------------
+# -------- Board -----------
+# --------------------------
+
+# Each smaller array is a column on the board
+#                1    2    3    4    5    6    7    8
+pieces = [ nil, [ ], [ ], [ ], [ ], [ ], [ ], [ ], [ ] ]
+#           ^
+#           |
+# The first can be anything because we aren't going to use it
+
+pieces[1][8] = black_rook_left
+pieces[2][8] = black_knight_left
+pieces[5][8] = black_king
+pieces[7][8] = black_knight_right
+pieces[8][8] = black_rook_right
+
+pieces[1][1] = white_rook_left
+pieces[2][1] = white_knight_left
+pieces[5][1] = white_king
+pieces[7][1] = white_knight_right
+pieces[8][1] = white_rook_right
+
+my_board = Board.new(pieces)
+
+puts "Board class"
+puts "Good moves"
+p my_board.move?(7, 1,  6, 3)
+p my_board.move?(5, 1,  4, 2)
+
+puts "Bad moves"
+p my_board.move?(5, 4,  1, 1)
+p my_board.move?(1, 1,  50, 50)
+p my_board.move?(8, 8,  8, 8)
+p my_board.move?(8, 1,  7, 8)
+
+
