@@ -3,6 +3,7 @@
 require_relative("lib/piece.rb")
 require_relative("lib/king.rb")
 require_relative("lib/rook.rb")
+require_relative("lib/knight.rb")
 
 # --------------------------
 # --------- King -----------
@@ -41,5 +42,26 @@ p white_rook_right.move?(2, 1)
 puts "Bad moves"
 p white_rook_right.move?(6, 3)
 p white_rook_right.move?(2, 3)
+
+puts "\n------------------\n"
+
+
+# --------------------------
+# -------- Knight ----------
+# --------------------------
+
+black_knight_left = Knight.new(2, 8, "black")
+black_knight_right = Knight.new(7, 8, "black")
+white_knight_left = Knight.new(2, 1, "white")
+white_knight_right = Knight.new(7, 1, "white")
+
+puts "\nTesting the Knight"
+puts "Good moves"
+p white_knight_right.move?(6, 3)
+p white_knight_right.move?(5, 2)
+puts "Bad moves"
+p white_knight_right.move?(7, 4)
+p white_knight_right.move?(3, 5)
+p white_knight_right.move?(8, 4)
 
 puts "\n------------------\n"
